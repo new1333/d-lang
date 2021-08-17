@@ -2,14 +2,22 @@ import { Lexer } from "./Lexer";
 import { Parser } from "./Parser";
 
 const sourceCode = `
-  1 * 2 * 3
+ (1 + 2) * 3
 `;
 
-const lexer = new Lexer(sourceCode);
+function parse(code: string) {
+  const lexer = new Lexer(code);
 
-const tokens = lexer.getTokens();
+  const tokens = lexer.getTokens();
 
-const parser = new Parser(tokens);
+  const parser = new Parser(tokens);
 
-const ast = parser.parse();
-console.log(ast);
+  const ast = parser.parse();
+
+  return ast;
+}
+
+window.parse = parse;
+
+const ast = parse(sourceCode);
+console.log(`${ast}`);

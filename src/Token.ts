@@ -3,7 +3,8 @@ export enum TokenType {
   Minus = "-",
   Mul = "*",
   Div = "/",
-  Num = "Num",
+  Int = "int",
+  Float = "float",
   Lparen = "(",
   Rparen = ")",
 
@@ -14,14 +15,16 @@ export enum TokenType {
   For = "for",
 }
 
+export type TokenList = Token[];
+
 export class Token {
   constructor(public type: TokenType, public value?: any) {}
 
-  print() {
+  toString() {
     if (this.value) {
-      console.log(`[${this.type}:${this.value}]`);
+      return `${this.type}:${this.value}`;
     } else {
-      console.log(`[${this.type}]`);
+      return `${this.type}`;
     }
   }
 }

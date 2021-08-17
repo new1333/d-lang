@@ -46,11 +46,21 @@ export class Lexer {
 
   parseNumber(): Token {
     let numStr = "";
-    while (isDigits(this.currentChar)) {
+    let dotNum = 0;
+    while (isDigits(this.currentChar) || this.currentChar === ".") {
+      if (this.currentChar) {
+        dotNum += 1;
+        if (dotNum > 1) {
+          console.error("float can only has a dot ");
+        }
+      }
       numStr += this.currentChar;
       this.advance();
     }
 
-    return new Token(TokenType.Num, Number(numStr));
+    return new Token(
+      dotNum > 0 ? TokenType.Float : TokenType.Int,
+      Number(numStr)
+    );
   }
 }
