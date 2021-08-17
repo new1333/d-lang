@@ -11,6 +11,7 @@ export enum TokenType {
   Var = "var",
   If = "if",
   While = "while",
+  For = "for",
 }
 
 export class Token {

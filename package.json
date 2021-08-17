@@ -1,12 +1,15 @@
 {
   "name": "d-lang",
   "version": "0.0.0",
+  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "repl": "ts-node ./src/main.ts"
   },
   "devDependencies": {
+    "ts-node": "^10.2.0",
     "typescript": "^4.3.2",
     "vite": "^2.4.4"
   }
